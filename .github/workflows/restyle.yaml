@@ -57,7 +57,7 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          FILE_LIST=$(git diff $BASE_SHA..$HEAD_SHA --pretty=format: --name-only --ignore-submodules --diff-filter=d)
+          FILE_LIST=$(git diff $BASE_SHA..$HEAD_SHA --pretty=format:--name-only --ignore-submodules --diff-filter=d)
           echo "Restyling files changed: ($BASE_SHA..$HEAD_SHA)"
           for file in $FILE_LIST; do  echo "  $file";  done
           docker exec restyler restyle-path $FILE_LIST
